@@ -1,8 +1,7 @@
 import java.util.HashSet;
 import java.util.Set;
 
-import algolib.SinglyLinkedList;
-import algolib.SinglyLinkedListNode;
+import algolib.ListNode;
 
 public class P_02_01_RemoveDups {
 	
@@ -12,30 +11,21 @@ public class P_02_01_RemoveDups {
 	}
 	
 	private static void testRemoveDups() {
-		SinglyLinkedList list = createTestList();
+		ListNode list = createTestList();
 		System.out.println(list);
 		removeDups(list);
 		System.out.println(list);
 		System.out.println();
 	}
 	
-	private static SinglyLinkedList createTestList() {
-		SinglyLinkedList list = new SinglyLinkedList();
-		list.add(1);
-		list.add(2);
-		list.add(2);
-		list.add(2);
-		list.add(3);
-		list.add(2);
-		list.add(4);
-		list.add(2);
-		return list;
+	private static ListNode createTestList() {
+		return ListNode.fromArray(new int[] { 1, 2, 2, 2, 3, 1, 2 });
 	}
 	
-	public static void removeDups(SinglyLinkedList list) {
+	public static void removeDups(ListNode list) {
 		Set<Integer> set = new HashSet<Integer>();
-		SinglyLinkedListNode previous = null;
-		SinglyLinkedListNode current = list.head;
+		ListNode previous = null;
+		ListNode current = list;
 		while (current != null) {
 			if (set.contains(current.data)) {
 				previous.next = current.next;
@@ -48,18 +38,18 @@ public class P_02_01_RemoveDups {
 	}
 	
 	private static void testRemoveDupsNoBuffer() {
-		SinglyLinkedList list = createTestList();
+		ListNode list = createTestList();
 		System.out.println(list);
 		removeDupsNoBuffer(list);
 		System.out.println(list);
 		System.out.println();
 	}
 	
-	public static void removeDupsNoBuffer(SinglyLinkedList list) {
-		SinglyLinkedListNode outer = list.head;
+	public static void removeDupsNoBuffer(ListNode list) {
+		ListNode outer = list;
 		while (outer != null) {
-			SinglyLinkedListNode innerPrev = outer;
-			SinglyLinkedListNode innerCurr = outer.next;
+			ListNode innerPrev = outer;
+			ListNode innerCurr = outer.next;
 			while (innerCurr != null ) {
 				if (outer.data == innerCurr.data) {
 					innerPrev.next = innerCurr.next;

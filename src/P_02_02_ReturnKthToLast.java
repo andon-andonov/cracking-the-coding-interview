@@ -1,20 +1,18 @@
-import algolib.SinglyLinkedList;
-import algolib.SinglyLinkedListNode;
+import algolib.ListNode;
 
 public class P_02_02_ReturnKthToLast {
 
 	public static void main(String[] args) {
-		test(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, 3);                                               
+		ListNode list = ListNode.fromArray(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 });
+		System.out.println(list);
+		System.out.println(findKthToLast(list, 1));
+		System.out.println(findKthToLast(list, 3));
+		System.out.println(findKthToLast(list, 10));
 	}
 	
-	private static void test(int[] initArray, int k) {
-		SinglyLinkedList list = SinglyLinkedList.fromArray(initArray);
-		System.out.println(findKthToLast(list, k));
-	}
-	
-	public static int findKthToLast(SinglyLinkedList list, int k) {
-		SinglyLinkedListNode front = list.head;
-		SinglyLinkedListNode back = list.head;
+	public static int findKthToLast(ListNode list, int k) {
+		ListNode front = list;
+		ListNode back = list;
 		int i = 0;
 		while (front != null) {
 			if (i >= k) {
