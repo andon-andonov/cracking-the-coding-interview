@@ -1,5 +1,5 @@
 
-public class P_01_01_IsUnique_BitVector {
+public class P_01_01_IsUnique {
 
 	public static void main(String[] args) {
 		System.out.println(isUnique(""));
